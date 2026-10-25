@@ -20,7 +20,6 @@ backend.hcl
 # Public template boundary
 !**/terraform.tfvars.example
 !**/backend.tf.example
-!migration/*.tf.example
 *.pem
 *.key
 *.p12

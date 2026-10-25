@@ -25,13 +25,6 @@ variable "psk_revision" {
   type    = number
   default = 1
 }
-variable "existing_tunnel_psks" {
-  description = "Optional ephemeral map to preserve existing keys during bootstrap adoption. Never put in a tfvars file."
-  type        = map(string)
-  sensitive   = true
-  ephemeral   = true
-  default     = null
-}
 locals { tunnels = toset(["tunnel0", "tunnel1", "tunnel2", "tunnel3"]) }
 resource "vault_mount" "vpn" {
   path        = var.vault_mount
@@ -49,7 +42,7 @@ resource "vault_kv_secret_v2" "tunnel" {
   mount    = vault_mount.vpn.path
   name     = "${var.vault_prefix}/${each.key}"
   data_json_wo = jsonencode({
-    psk = var.existing_tunnel_psks == null ? "A${ephemeral.random_password.psk[each.key].result}" : var.existing_tunnel_psks[each.key]
+    psk = "A${ephemeral.random_password.psk[each.key].result}"
   })
   data_json_wo_version = var.psk_revision
 }

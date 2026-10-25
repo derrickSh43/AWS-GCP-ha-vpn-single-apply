@@ -1,7 +1,6 @@
 project_id = "REPLACE_ME_PROJECT_ID"
 aws_region = "us-east-1"
 region = "us-central1"
-zone = "us-central1-a"
 vault_mount = "vpn"
 vault_prefix = "aws-gcp-vpn"
 aws_deployment_role_name = "aws-gcp-vpn-deployer"

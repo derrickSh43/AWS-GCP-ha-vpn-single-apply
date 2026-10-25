@@ -43,9 +43,9 @@ resource "aws_iam_role_policy" "deployment" {
     Version = "2012-10-17"
     Statement = [
       {
-        Sid       = "RegionalNetworkAndTestHosts"
+        Sid       = "RegionalNetwork"
         Effect    = "Allow"
-        Action    = ["ec2:Describe*", "ec2:CreateVpc", "ec2:DeleteVpc", "ec2:ModifyVpcAttribute", "ec2:CreateSubnet", "ec2:DeleteSubnet", "ec2:CreateRouteTable", "ec2:DeleteRouteTable", "ec2:AssociateRouteTable", "ec2:DisassociateRouteTable", "ec2:CreateSecurityGroup", "ec2:DeleteSecurityGroup", "ec2:AuthorizeSecurityGroupIngress", "ec2:AuthorizeSecurityGroupEgress", "ec2:RevokeSecurityGroupIngress", "ec2:RevokeSecurityGroupEgress", "ec2:CreateVpnGateway", "ec2:DeleteVpnGateway", "ec2:AttachVpnGateway", "ec2:DetachVpnGateway", "ec2:CreateCustomerGateway", "ec2:DeleteCustomerGateway", "ec2:CreateVpnConnection", "ec2:DeleteVpnConnection", "ec2:ModifyVpnConnectionOptions", "ec2:ModifyVpnTunnelOptions", "ec2:EnableVgwRoutePropagation", "ec2:DisableVgwRoutePropagation", "ec2:CreateTags", "ec2:DeleteTags", "ec2:RunInstances", "ec2:TerminateInstances", "ec2:ModifyInstanceAttribute", "ec2:MonitorInstances", "ec2:UnmonitorInstances", "ec2:GetConsoleOutput", "ec2:CreateFlowLogs", "ec2:DeleteFlowLogs", "ec2:CreateVolume", "ec2:DeleteVolume"]
+        Action    = ["ec2:Describe*", "ec2:CreateVpc", "ec2:DeleteVpc", "ec2:ModifyVpcAttribute", "ec2:CreateSubnet", "ec2:DeleteSubnet", "ec2:CreateRouteTable", "ec2:DeleteRouteTable", "ec2:AssociateRouteTable", "ec2:DisassociateRouteTable", "ec2:CreateSecurityGroup", "ec2:DeleteSecurityGroup", "ec2:AuthorizeSecurityGroupIngress", "ec2:AuthorizeSecurityGroupEgress", "ec2:RevokeSecurityGroupIngress", "ec2:RevokeSecurityGroupEgress", "ec2:CreateVpnGateway", "ec2:DeleteVpnGateway", "ec2:AttachVpnGateway", "ec2:DetachVpnGateway", "ec2:CreateCustomerGateway", "ec2:DeleteCustomerGateway", "ec2:CreateVpnConnection", "ec2:DeleteVpnConnection", "ec2:ModifyVpnConnectionOptions", "ec2:ModifyVpnTunnelOptions", "ec2:EnableVgwRoutePropagation", "ec2:DisableVgwRoutePropagation", "ec2:CreateTags", "ec2:DeleteTags", "ec2:CreateFlowLogs", "ec2:DeleteFlowLogs"]
         Resource  = "*"
         Condition = { StringEquals = { "aws:RequestedRegion" = var.aws_region } }
       },
@@ -84,11 +84,6 @@ resource "aws_iam_role_policy" "deployment" {
         Condition = { StringEquals = { "iam:PassedToService" = "vpc-flow-logs.amazonaws.com" } }
       },
       {
-        Effect   = "Allow"
-        Action   = ["ssm:GetParameter"]
-        Resource = "arn:aws:ssm:${var.aws_region}::parameter/aws/service/ami-amazon-linux-latest/*"
-      },
-      {
         Sid      = "StateBucketMetadata"
         Effect   = "Allow"
         Action   = ["s3:ListBucket", "s3:GetBucketLocation"]
@@ -108,7 +103,7 @@ resource "google_service_account" "deployment" {
   display_name = "VPN Terraform short-lived impersonated deployment identity"
 }
 resource "google_project_iam_member" "deployment" {
-  for_each = toset(["roles/compute.networkAdmin", "roles/compute.securityAdmin", "roles/compute.instanceAdmin.v1", "roles/monitoring.editor", "roles/logging.viewer", "roles/serviceusage.serviceUsageConsumer"])
+  for_each = toset(["roles/compute.networkAdmin", "roles/compute.securityAdmin", "roles/monitoring.editor", "roles/logging.viewer", "roles/serviceusage.serviceUsageConsumer"])
   project  = var.project_id
   role     = each.key
   member   = "serviceAccount:${google_service_account.deployment.email}"
