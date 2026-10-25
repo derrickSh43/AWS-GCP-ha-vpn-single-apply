@@ -38,7 +38,7 @@ These establish observed IKE/ESP encryption and integrity selection. DH group 16
 - terraform validate: passed, with the documented Vault legacy-data-source deprecation warning.
 - TFLint: passed.
 - Checkov 3.3.30: 126 passed, zero failed, three documented lab exceptions, zero parsing errors.
-- A GitHub Actions workflow is provided; no hosted GitHub CI run or public repository publication is claimed.
+- The sanitized source is published at [AWS-GCP-ha-vpn-single-apply](https://github.com/derrickSh43/AWS-GCP-ha-vpn-single-apply). Hosted static-check results are available under its Actions tab.
 
 Notifications were not delivery-tested: destination lists are empty. GCP and AWS alert resources exist, but no claim is made that an email, SMS, or other external notification was sent.
 

@@ -22,7 +22,10 @@ jobs:
       - uses: terraform-linters/setup-tflint@v4
         with:
           tflint_version: v0.55.1
-      - run: tflint --init
+      - name: Install TFLint plugins
+        run: tflint --init
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: tflint --recursive
       - uses: bridgecrewio/checkov-action@v12
         with:

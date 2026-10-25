@@ -173,7 +173,7 @@ AWS VGW routing does not imply four-way outbound ECMP simply because four tunnel
 - **GCP tunnel diagnostics:** automatic IKE/IPsec entries in Cloud Logging. `terraform output -raw gcp_tunnel_log_filter` returns a filter using the actual tunnel IDs.
 - **Traffic visibility:** AWS VPC flow logs and GCP subnet flow logs, separate from tunnel diagnostics.
 - **Alerts:** four per-tunnel CloudWatch `TunnelState` alarms and a GCP tunnel-established alert. Configure notification destinations; the demonstration did not test external notification delivery.
-- **Checks:** Terraform formatting/validation, TFLint, and Checkov in [GitHub Actions](.github/workflows/terraform.yml). No hosted CI run is claimed. The documented local scan recorded 126 passed checks, zero failures, and three scoped lab exceptions.
+- **Checks:** Terraform formatting/validation, TFLint, and Checkov in [GitHub Actions](.github/workflows/terraform.yml). Hosted results are available in [GitHub Actions](https://github.com/derrickSh43/AWS-GCP-ha-vpn-single-apply/actions/workflows/terraform.yml). The documented local scan recorded 126 passed checks, zero failures, and three scoped lab exceptions.
 
 AWS logging options and log streams were verified; AWS diagnostic events were not observed by that verification query. GCP diagnostic events were observed. See the report for this distinction.
 
