@@ -1,0 +1,16 @@
+{
+  "scope": "Fresh public export only; no existing GitHub history inspected",
+  "text_files_checked": 39,
+  "known_private_secret_values_checked": 5,
+  "findings": 0,
+  "checks": [
+    "Explicit file export; no Git history",
+    "No private plans/state/tfvars/local scripts/logs",
+    "Known private token and PSK exact-match scan",
+    "Credential and live deployment identifier patterns",
+    "Only example private/link-local IP ranges in text",
+    "Relative documentation links verified",
+    "Separate video with opaque identifier redaction; original remains private"
+  ],
+  "limitations": "Pattern/exact-match checks are not a guarantee against every possible disclosure. Video redaction is visually reviewed separately."
+}

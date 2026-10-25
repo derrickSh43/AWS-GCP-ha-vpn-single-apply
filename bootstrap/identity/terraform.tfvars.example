@@ -1,0 +1,4 @@
+project_id = "REPLACE_ME_PROJECT"
+bootstrap_aws_principal_arn = "REPLACE_ME_SSO_OR_BOOTSTRAP_PRINCIPAL_ARN"
+bootstrap_gcp_principal = "user:REPLACE_ME_EMAIL"
+state_bucket_name = "REPLACE_ME_STATE_BUCKET"

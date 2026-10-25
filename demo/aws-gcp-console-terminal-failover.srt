@@ -1,0 +1,35 @@
+1
+00:00:00,000 --> 00:00:06,000
+Two BGP sessions are down. The other pair remains established.
+
+2
+00:00:06,000 --> 00:00:15,000
+Private-VM console samples show replies in both directions.
+
+3
+00:00:15,000 --> 00:00:26,000
+The restore command asks Terraform to re-enable the two BGP peers.
+
+4
+00:00:26,000 --> 00:00:32,000
+Terraform applies the BGP changes. This section plays at 3x speed.
+
+5
+00:00:32,000 --> 00:00:38,667
+The restore continues while the cloud console reports BGP status.
+
+6
+00:00:38,667 --> 00:00:44,667
+GCP now shows all four BGP sessions established.
+
+7
+00:00:44,667 --> 00:00:50,667
+The terminal shows restored peers and private-VM ping samples.
+
+8
+00:00:50,667 --> 00:00:56,000
+AWS shows both tunnels UP on this VPN connection.
+
+9
+00:00:56,000 --> 00:01:00,667
+Tunnel logging is enabled. This footage was recorded before teardown.

@@ -1,0 +1,3 @@
+aws_deployment_role_arn = "REPLACE_ME_DEPLOYMENT_ROLE_ARN"
+vault_mount = "vpn"
+vault_prefix = "aws-gcp-vpn"

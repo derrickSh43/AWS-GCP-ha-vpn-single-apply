@@ -1,0 +1,59 @@
+moved {
+  from = google_compute_vpn_tunnel.tunnel0
+  to   = google_compute_vpn_tunnel.tunnels["tunnel0"]
+}
+
+moved {
+  from = google_compute_router_interface.router_interface_tunnel0
+  to   = google_compute_router_interface.tunnels["tunnel0"]
+}
+
+moved {
+  from = google_compute_router_peer.router_peer_tunnel0
+  to   = google_compute_router_peer.tunnels["tunnel0"]
+}
+
+moved {
+  from = google_compute_vpn_tunnel.tunnel1
+  to   = google_compute_vpn_tunnel.tunnels["tunnel1"]
+}
+
+moved {
+  from = google_compute_router_interface.router_interface_tunnel1
+  to   = google_compute_router_interface.tunnels["tunnel1"]
+}
+
+moved {
+  from = google_compute_router_peer.router_peer_tunnel1
+  to   = google_compute_router_peer.tunnels["tunnel1"]
+}
+
+moved {
+  from = google_compute_vpn_tunnel.tunnel2
+  to   = google_compute_vpn_tunnel.tunnels["tunnel2"]
+}
+
+moved {
+  from = google_compute_router_interface.router_interface_tunnel2
+  to   = google_compute_router_interface.tunnels["tunnel2"]
+}
+
+moved {
+  from = google_compute_router_peer.router_peer_tunnel2
+  to   = google_compute_router_peer.tunnels["tunnel2"]
+}
+
+moved {
+  from = google_compute_vpn_tunnel.tunnel3
+  to   = google_compute_vpn_tunnel.tunnels["tunnel3"]
+}
+
+moved {
+  from = google_compute_router_interface.router_interface_tunnel3
+  to   = google_compute_router_interface.tunnels["tunnel3"]
+}
+
+moved {
+  from = google_compute_router_peer.router_peer_tunnel3
+  to   = google_compute_router_peer.tunnels["tunnel3"]
+}

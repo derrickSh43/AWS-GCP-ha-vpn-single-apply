@@ -1,0 +1,31 @@
+name: Terraform checks
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.17.0
+      - run: terraform fmt -check -recursive
+      - run: terraform init -backend=false -input=false
+      - run: terraform validate
+      - name: Validate bootstrap roots
+        run: |
+          for root in bootstrap/identity bootstrap/vault; do
+            terraform -chdir="$root" init -backend=false -input=false
+            terraform -chdir="$root" validate
+          done
+      - uses: terraform-linters/setup-tflint@v4
+        with:
+          tflint_version: v0.55.1
+      - run: tflint --init
+      - run: tflint --recursive
+      - uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: .
+          framework: terraform
+          quiet: true
